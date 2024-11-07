@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mouse Shadow</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="hero">
+      <h1 contenteditable>🔥WOAH!</h1>
+    </div>
+
+    <style>
+      html {
+        color: black;
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+      }
+
+      h1 {
+        text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+        font-size: 100px;
+      }
+    </style>
+
+    <script>
+      const hero = document.querySelector(".hero");
+      const txt = document.querySelector("h1");
+
+      hero.addEventListener("mousemove", showCoor);
+      function showCoor(e) {
+        console.clear();
+        console.log(e, this, e.target);
+        // const width = hero.offsetWidth;
+        // const height = hero.offsetHeight;
+        let { offsetWidth: width, offsetHeight: height } = hero;
+        console.log(width, height);
+        let { offsetX: x, offsetY: y } = e;
+        if (this !== e.target) {
+          x = x + e.target.offsetLeft;
+          y = y + e.target.offsetTop;
+        }
+        console.log(x, y);
+        // x = (x / width) * 100 - 50;
+        // y = (y / height) * 100 - 50;
+        //or create var walk=100; //100px sups
+        // x=x/width * walk - walk/2 half of walk here im taking 30 nd half is 15 manualy
+        x = (x / width) * 30 - 15;
+        y = (y / height) * 30 - 15;
+        // console.log(x, y);
+        txt.style.textShadow = `${x}px ${y}px 0 rgba(0,0,0,.20)`;
+        //or
+        // txt.style.textShadow = `${x}px ${y}px 0 red
+        // ,${y}px ${x * -1}px 0 blue`;
+      }
+    </script>
+  </body>
+</html>
